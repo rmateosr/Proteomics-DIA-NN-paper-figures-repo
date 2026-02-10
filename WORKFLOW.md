@@ -5,9 +5,56 @@
 
 ---
 
+## How This Repository Was Created
+
+The following steps were performed on 2026-02-10 using the GitHub CLI (`gh`) from WSL2:
+
+### 1. Authenticate with GitHub
+```bash
+gh auth login --web -p https
+```
+This opened a browser for OAuth authentication and logged in as `rmateosr`.
+
+### 2. Initialize a git repository in the scripts folder
+```bash
+cd "C:\Users\Raul\Dropbox\Papers\DIA-NN\Figures\scripts"
+git init
+git branch -m main
+```
+
+### 3. Configure git identity
+```bash
+git config user.name "rmateosr"
+git config user.email "rmateosr@users.noreply.github.com"
+```
+
+### 4. Stage and commit all R scripts
+```bash
+git add *.R
+git commit -m "Add R scripts for DIA-NN proteomics paper figures"
+```
+
+### 5. Create the remote GitHub repository and push
+```bash
+gh repo create rmateosr/Proteomics-DIA-NN-paper-figures-repo \
+  --public \
+  --description "R scripts for generating figures in the DIA-NN proteomics paper" \
+  --source . \
+  --push
+```
+
+### 6. Set up credential helper for future pushes
+```bash
+gh auth setup-git
+```
+
+This created the public repository at https://github.com/rmateosr/Proteomics-DIA-NN-paper-figures-repo with the working scripts directory as the local repo — no separate folder needed.
+
+---
+
 ## Setup
 
-Your working scripts folder is already a git repository linked to GitHub. No separate repo folder is needed — you edit scripts in place and use git to track and push changes.
+Your working scripts folder is already a git repository linked to GitHub. You edit scripts in place and use git to track and push changes.
 
 ---
 
